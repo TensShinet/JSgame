@@ -1,3 +1,3 @@
 # JSgame
 跟着萧大做游戏
-[demo](http://TensShinet.me/JSgame/PlayBlock/index.html) 
+[第一天效果](https://tensshinet.github.io/JSgame/PlayBlock/index.html) 
