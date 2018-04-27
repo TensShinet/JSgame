@@ -28,7 +28,7 @@ var Sence = function(game) {
         if(window.PAUSE) {
             return
         }
-        if(ball.y + ball.height > paddle.y + paddle.height) {
+        if(ball.y + ball.height >= game.height) {
             game.sence = endSence(game)
         }
         if(ball.fire) {
