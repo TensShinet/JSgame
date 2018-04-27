@@ -24,5 +24,12 @@ var Ball = function(game) {
     o.bounce = function() {
         o.speedY *= -1
     }
+    var innerRect = function(p1, p2, p3) {
+        return p1 >= p2 && p1 <= p3
+    }
+    o.hasPoint = function(x, y, OBall) {
+        return innerRect(x, this.x, this.x + this.width) &&
+                innerRect(y, this.y, this.y + this.height)
+    }
     return o
 }

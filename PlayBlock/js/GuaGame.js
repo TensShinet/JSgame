@@ -1,5 +1,6 @@
-var GuaGame = function(fps) {
+var GuaGame = function(callback) {
     var o = {
+        sence: null,
         actions: {},
         keydowns: {},
     }
@@ -22,7 +23,16 @@ var GuaGame = function(fps) {
     o.drawImage = function(OImage) {
         o.context.drawImage(OImage.image, OImage.x, OImage.y)
     }
-    setInterval(function(){
+    o.update = function() {
+        o.sence.update()
+    }
+    o.draw = function() {
+        o.sence.draw()
+    }
+    o.runWithSence = function(sence) {
+        o.sence = sence
+    }
+    var runLoop = function() {
         for (var p in o.keydowns) {
             if(o.keydowns[p]) {
                 o.actions[p]()
@@ -31,7 +41,15 @@ var GuaGame = function(fps) {
         o.update()
         o.context.clearRect(0, 0, o.width, o.height)
         o.draw()
-    }, 1000/fps)
+
+        setTimeout(function(){
+            runLoop()
+        }, 1000/window.FPS)
+    }
+    setTimeout(function(){
+        callback(o)
+        runLoop()
+    }, 1000/window.FPS)
 
     return o
 }
