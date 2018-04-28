@@ -12,7 +12,12 @@ var imageFromPath = function(url, object) {
     }
 }
 var wrongKey = function(key) {
-    return key != "a" && key != "d" && key != "f"
+    var allKey = ["a", "d", "f", "r", "k"]
+    var keyLowerCase = key.toLowerCase()
+    for (var i = 0; i < allKey.length; i++) {
+        if(keyLowerCase === allKey[i]) { break }
+    }
+    return i >= allKey.length
 }
 var innerRect = function(r1, r2) {
     // 只写 上下交

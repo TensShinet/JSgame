@@ -32,6 +32,9 @@ var GuaGame = function(callback) {
     o.runWithSence = function(sence) {
         o.sence = sence
     }
+    o.replaceSence = function(sence) {
+        this.sence = sence
+    }
     var runLoop = function() {
         for (var p in o.keydowns) {
             if(o.keydowns[p]) {

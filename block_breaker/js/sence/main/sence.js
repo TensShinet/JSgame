@@ -29,7 +29,8 @@ var Sence = function(game) {
             return
         }
         if(ball.y + ball.height >= game.height) {
-            game.sence = endSence(game)
+            let s = new EndSence(game)
+            game.replaceSence(s)
         }
         if(ball.fire) {
             ball.move()
@@ -58,20 +59,15 @@ var Sence = function(game) {
     }
     return s
 }
-var endSence = function(game) {
 
-    var s = {
-        game: game,
+class GuaSence {
+    constructor(game) {
+        this.game = game
     }
-
-    s.update = function() {
+    update() {
 
     }
+    draw() {
 
-    s.draw = function() {
-        game.context.font="40px Georgia";
-        game.context.fillText("WT ! Game Over!", 90, 200);
     }
-
-    return s
 }
