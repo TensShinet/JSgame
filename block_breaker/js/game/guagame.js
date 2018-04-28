@@ -1,41 +1,44 @@
-var GuaGame = function(callback) {
-    var o = {
-        sence: null,
-        actions: {},
-        keydowns: {},
-    }
-    o.canvas = document.getElementById("myCanvas")
-    o.context = o.canvas.getContext("2d")
-    o.height = o.canvas.height
-    o.width = o.canvas.width
+class GuaGame {
+    constructor(callback) {
+        this.sence = null
+        this.actions = {}
+        this.keydowns = {}
+        this.canvas = document.getElementById("myCanvas")
+        this.context = this.canvas.getContext("2d")
+        this.height = this.canvas.height
+        this.width = this.canvas.width
 
-    window.addEventListener("keydown", function(event){
-        if(wrongKey(event.key)) { return }
-        o.keydowns[event.key] = true
-    })
-    window.addEventListener("keyup", function(event){
-        if(wrongKey(event.key)) { return }
-        o.keydowns[event.key] = false
-    })
-    o.registeActions = function(key, callback) {
-        o.actions[key] = callback
+        window.addEventListener("keydown", (event)=>{
+            if(wrongKey(event.key)) { return }
+            this.keydowns[event.key] = true
+        })
+        window.addEventListener("keyup", (event)=>{
+            if(wrongKey(event.key)) { return }
+            this.keydowns[event.key] = false
+        })
+        setTimeout(() => {
+            callback(this)
+            this.runLoop()
+        }, 1000/window.FPS)
     }
-    o.drawImage = function(OImage) {
-        o.context.drawImage(OImage.image, OImage.x, OImage.y)
+    registeActions(key, callback) {
+        this.actions[key] = callback
     }
-    o.update = function() {
-        o.sence.update()
+    drawImage(OImage) {
+        this.context.drawImage(OImage.image, OImage.x, OImage.y)
     }
-    o.draw = function() {
-        o.sence.draw()
+    update() {
+        this.sence.update()
     }
-    o.runWithSence = function(sence) {
-        o.sence = sence
+    draw(){
+        this.sence.draw()
     }
-    o.replaceSence = function(sence) {
+
+    replaceSence(sence) {
         this.sence = sence
     }
-    var runLoop = function() {
+    runLoop() {
+        var o = this
         for (var p in o.keydowns) {
             if(o.keydowns[p]) {
                 o.actions[p]()
@@ -46,13 +49,10 @@ var GuaGame = function(callback) {
         o.draw()
 
         setTimeout(function(){
-            runLoop()
+            o.runLoop()
         }, 1000/window.FPS)
     }
-    setTimeout(function(){
-        callback(o)
-        runLoop()
-    }, 1000/window.FPS)
-
-    return o
+    runWithSence(sence) {
+        this.sence = sence
+    }
 }

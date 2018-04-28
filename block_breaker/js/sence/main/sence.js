@@ -59,7 +59,6 @@ var Sence = function(game) {
     }
     return s
 }
-
 class GuaSence {
     constructor(game) {
         this.game = game
