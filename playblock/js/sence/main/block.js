@@ -8,7 +8,7 @@ var Block = function(position) {
         alive: true,
         lifes: p[2] || 1
     }
-    imageFromPath("gbo.png", o)
+    imageFromPath("img/gbo.png", o)
     o.collide = function(ball) {
         return innerRect(ball, o) || innerRect(o, ball)
     }

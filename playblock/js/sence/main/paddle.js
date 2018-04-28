@@ -5,7 +5,7 @@ var Paddle = function(game) {
         y: 350,
         speed: 10,
     }
-    imageFromPath("bp.png", o)
+    imageFromPath("img/bp.png", o)
     o.moveLeft = function() {
         if(o.x > 0) {
             o.x -= o.speed

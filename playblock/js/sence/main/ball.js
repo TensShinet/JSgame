@@ -7,7 +7,7 @@ var Ball = function(game) {
         speedY: 5,
         fire: false,
     }
-    imageFromPath("basb.png", o)
+    imageFromPath("img/basb.png", o)
     o.fired = function() {
         o.fire = true
     }
