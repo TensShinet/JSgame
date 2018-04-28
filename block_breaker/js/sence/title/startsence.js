@@ -13,6 +13,6 @@ class StartSence extends GuaSence {
         this.game.context.textAlign = "center"
         var positionX = this.game.width / 2
         var positionY = this.game.height / 2
-        this.game.context.fillText("Game Start! Press \"k\" to Restart", positionX, positionY)
+        this.game.context.fillText("Game Start! Press \"k\" To Start", positionX, positionY)
     }
 }
