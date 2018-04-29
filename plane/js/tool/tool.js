@@ -30,6 +30,11 @@ var wrongKey = function(key) {
     }
     return i >= allKey.length
 }
+var randomNumberBetween = function(s, f) {
+    var n = (f - s) * Math.random()
+    var result = Math.floor(n + s)
+    return result
+}
 var enableDebugMode = function() {
     var input = document.getElementById("id-input-range")
     input.addEventListener("input", function(event){
