@@ -28,7 +28,7 @@ class GuaGame {
         this.actions[key] = callback
     }
     drawImage(OImage) {
-        this.context.drawImage(OImage.image, OImage.x, OImage.y)
+        this.context.drawImage(OImage.texture, OImage.x, OImage.y)
     }
     update() {
         this.sence.update()
