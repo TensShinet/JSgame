@@ -4,7 +4,7 @@ class GuaSence {
         this.element = []
     }
     update() {
-
+        
     }
     addElement(img) {
         this.element.push(img)

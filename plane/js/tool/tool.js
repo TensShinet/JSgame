@@ -23,7 +23,7 @@ var textureFromPath = function(url, object) {
 
 }
 var wrongKey = function(key) {
-    var allKey = ["a", "d", "f", "r", "k"]
+    var allKey = ["a", "d", "w", "s", ]
     var keyLowerCase = key.toLowerCase()
     for (var i = 0; i < allKey.length; i++) {
         if(keyLowerCase === allKey[i]) { break }

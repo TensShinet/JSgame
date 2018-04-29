@@ -1,8 +1,8 @@
 class GuaImage {
-    constructor(path) {
+    constructor(game, path) {
+        this.game = game
         this.x = 0
         this.y = 0
-
         textureFromPath(path, this)
     }
     update() {
