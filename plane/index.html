@@ -17,11 +17,13 @@
     <script type="text/javascript"src="js/game/gua_image.js">
     </script>
     <!-- 主场景 -->
-    <script type="text/javascript"src="js/sence/main/paddle.js">
+    <script type="text/javascript"src="js/sence/main/cloud.js">
     </script>
-    <script type="text/javascript"src="js/sence/main/ball.js">
+    <script type="text/javascript"src="js/sence/main/enemy.js">
     </script>
-    <script type="text/javascript"src="js/sence/main/block.js">
+    <script type="text/javascript"src="js/sence/main/bullet.js">
+    </script>
+    <script type="text/javascript"src="js/sence/main/plane.js">
     </script>
     <script type="text/javascript"src="js/sence/main/sence.js">
     </script>
@@ -34,10 +36,73 @@
     <body>
         <canvas id="myCanvas" width="400" height="500" style="border:1px solid #000000;">
         </canvas>
-        <br>
-        <input type="range"id="id-input-range" value="1">
+        <div>
+            <label>
+                <input type="range" class="gua-auto-slider"
+                    value=""
+                    max="20"
+                    min="0"
+                    data-value="config.player_speed"
+                >
+                玩家速度<span calss="gua-label">10</span>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="range" class="gua-auto-slider"
+                    value=""
+                    max="100"
+                    min="0"
+                    data-value="config.bullet_speed"
+                >
+                bullet速度<span calss="gua-label">50</span>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="range" class="gua-auto-slider"
+                    value=""
+                    max="8"
+                    min="0"
+                    data-value="config.player_colddown"
+                >
+                bullet冷却时间<span calss="gua-label">4</span>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="range" class="gua-auto-slider"
+                    value=""
+                    max="10"
+                    min="-10"
+                    data-value="config.cloud_speed"
+                >
+                cloud速度<span calss="gua-label">0</span>
+            </label>
+        </div>
         <!-- 主函数 -->
         <script type="text/javascript" src="js/main.js">
+        </script>
+        <script type="text/javascript">
+            var es = sel => document.querySelectorAll(sel)
+            var bindAll = function(sel, eventName, callback) {
+                var l = es(sel)
+                for(var i = 0; i < l.length; i++) {
+                    l[i].addEventListener(eventName, function(event){
+                        callback(event)
+                    })
+                }
+            }
+            bindAll(".gua-auto-slider", "input", function(event){
+                var target = event.target
+                var bindVar = target.dataset.value
+                var v = target.value
+                // 更新数据
+                eval(bindVar + "=" + v)
+                var label = target.closest("label")
+                var showValue = label.querySelector("span")
+                showValue.innerText = v
+            })
         </script>
     </body>
 </html>

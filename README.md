@@ -1,3 +1,4 @@
 # JSgame
 跟着萧大做游戏
-[效果](https://tensshinet.github.io/JSgame/block_breaker/index.html)
+[打砖块](https://tensshinet.github.io/JSgame/block_breaker/index.html)
+[飞机游戏](https://tensshinet.github.io/JSgame/plane/index.html)
