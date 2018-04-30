@@ -1,3 +1,15 @@
+class Bullet extends GuaImage {
+    constructor(game, path) {
+        super(game, path)
+        this.setup()
+    }
+    setup() {
+        this.speed = 1
+    }
+    update() {  
+        this.y -= this.speed
+    }
+}
 class Player extends GuaImage {
     constructor(game, path) {
         super(game, path)
@@ -21,6 +33,17 @@ class Player extends GuaImage {
     moveDown() {
         this.y += this.speed
     }
+    fire() {
+        var path = "img/bullet.gif"
+        // 由于素材不行, this.x + this.width / 2 不是中间值
+        var x = this.x + this.width / 2 - 5
+        var y = this.y
+        var b = new Bullet(this.game, path)
+        b.x = x
+        b.y = y
+        // 在加入飞机的时候, 给飞机 阈值一个 sence 的值 这个值是指向 调用飞机的场景
+        this.sence.addElement(b)
+    }
     setupInput() {
         var p = this
         var g = this.game
@@ -39,17 +62,21 @@ class Player extends GuaImage {
         g.registeActions("w", function(){
             p.moveUp()
         })
+        g.registeActions("f", function(){
+            p.fire()
+        })
     }
 }
+
 class Enemy extends GuaImage {
     constructor(game, path) {
         super(game, path)
         this.setup()
     }
     setup() {
-        this.speed = 2
+        this.speed = randomNumberBetween(2, 5)
         this.x = randomNumberBetween(0, this.game.width)
-        this.y = randomNumberBetween(0, this.game.height/3)
+        this.y = -randomNumberBetween(0, 200)
     }
     update() {
         if(this.y >= this.game.height) {
@@ -60,6 +87,24 @@ class Enemy extends GuaImage {
     }
 
 }
+class Cloud extends GuaImage {
+    constructor(game, path) {
+        super(game, path)
+        this.setup()
+    }
+    setup() {
+        this.speed = randomNumberBetween(2, 5)
+        this.x = randomNumberBetween(0, this.game.width)
+        this.y = -randomNumberBetween(0, 200)
+    }
+    update() {
+        if(this.y >= this.game.height) {
+            this.setup()
+            return
+        }
+        this.y += this.speed
+    }
+}
 
 class Sence extends GuaSence {
     constructor(game) {
@@ -69,7 +114,7 @@ class Sence extends GuaSence {
     setup() {
         this.bg = new GuaImage(this.game, "img/bg1.gif")
         this.player = new Player(this.game, "img/plane.gif")
-        this.cloud = new GuaImage(this.game, "img/cloud.png")
+        this.cloud = new Cloud(this.game, "img/cloud.png")
         this.enemys = []
         this.enemyNumber = 10
         this.cloud.x = 0
@@ -82,8 +127,9 @@ class Sence extends GuaSence {
         this.addEnemy()
     }
     update() {
+        // 子类去调用 父类的函数, 那么, 父类中的this 应该指向子类
+        super.update()
         this.cloud.y++
-        this.enemyMove()
     }
     addEnemy() {
         //
@@ -93,12 +139,6 @@ class Sence extends GuaSence {
             let enemy = new Enemy(this.game, path)
             this.enemys.push(enemy)
             this.addElement(enemy)
-        }
-    }
-    enemyMove() {
-        for(let i = 0; i < this.enemyNumber; i++) {
-            var e = this.enemys[i]
-            e.update()
         }
     }
 }
