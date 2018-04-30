@@ -18,9 +18,8 @@ class GuaSence {
         this.element.push(img)
     }
     draw() {
-        for(var i = 0; i < this.element.length; i++) {
-            var e = this.element[i]
-            this.game.drawImage(e)
+        for(var e of this.element) {
+            e.draw()
         }
     }
 }

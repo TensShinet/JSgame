@@ -25,3 +25,17 @@ var randomNumberBetween = function(s, f) {
     var result = Math.floor(n + s)
     return result
 }
+var randomAngleBetween = function(s, f) {
+    var n = (f - s) * Math.random()
+    var result = Math.floor(n + s) * Math.PI / 180
+    return result
+}
+var es = sel => document.querySelectorAll(sel)
+var bindAll = function(sel, eventName, callback) {
+    var l = es(sel)
+    for(var i = 0; i < l.length; i++) {
+        l[i].addEventListener(eventName, function(event){
+            callback(event)
+        })
+    }
+}

@@ -84,15 +84,6 @@
         <script type="text/javascript" src="js/main.js">
         </script>
         <script type="text/javascript">
-            var es = sel => document.querySelectorAll(sel)
-            var bindAll = function(sel, eventName, callback) {
-                var l = es(sel)
-                for(var i = 0; i < l.length; i++) {
-                    l[i].addEventListener(eventName, function(event){
-                        callback(event)
-                    })
-                }
-            }
             bindAll(".gua-auto-slider", "input", function(event){
                 var target = event.target
                 var bindVar = target.dataset.value

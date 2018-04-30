@@ -9,6 +9,6 @@ class GuaImage {
 
     }
     draw() {
-
+        this.game.drawImage(this)
     }
 }
