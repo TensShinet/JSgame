@@ -17,18 +17,26 @@ class Sence extends GuaSence {
         this.cloud = new Cloud(this.game, "img/cloud.png")
         this.enemys = []
         this.enemyNumber = 10
-        this.cloud.x = 0
-        this.cloud.y = 0
-
+        this.duration = 30
         this.addElement(this.bg)
         this.addElement(this.cloud)
         this.addElement(this.player)
 
         this.addEnemy()
+        this.ps = new GuaParticleSystem(this.game)
+        this.addElement(this.ps)
     }
     update() {
         // 子类去调用 父类的函数, 那么, 父类中的this 应该指向子类
         super.update()
+        this.duration--
+        if(this.duration <= 0) {
+            // 删除 ps
+            for(var i = 0; i < this.element.length; i++) {
+                if(this.element[i] instanceof GuaParticleSystem) { break }
+            }
+            this.element.splice(i, 1)
+        }
     }
     addEnemy() {
         //
