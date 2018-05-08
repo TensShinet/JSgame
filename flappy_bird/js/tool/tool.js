@@ -10,10 +10,16 @@ var textureFromPath = function(url, object) {
         object.height = image.height
         object.width = image.width
     }
-
 }
+var textureFromURL = function(url, object) {
+    var image = new Image()
+    image.src = url
+
+    return image
+}
+
 var wrongKey = function(key) {
-    var allKey = ["a", "d", "w", "s", "f", ]
+    var allKey = ["a", "d", "j",]
     var keyLowerCase = key.toLowerCase()
     for (var i = 0; i < allKey.length; i++) {
         if(keyLowerCase === allKey[i]) { break }
@@ -30,6 +36,10 @@ var randomAngleBetween = function(s, f) {
     var result = Math.floor(n + s) * Math.PI / 180
     return result
 }
+var innerRect = function(p1, p2, p3) {
+        return p1 >= p2 && p1 <= p3
+}
+
 var es = sel => document.querySelectorAll(sel)
 var bindAll = function(sel, eventName, callback) {
     var l = es(sel)
@@ -38,7 +48,4 @@ var bindAll = function(sel, eventName, callback) {
             callback(event)
         })
     }
-}
-var innerRect = function(p1, p2, p3) {
-        return p1 >= p2 && p1 <= p3
 }

@@ -15,9 +15,5 @@ class Enemy extends GuaImage {
         }
         this.y += this.speed
     }
-    collide(bullet) {
-        var b = bullet
-        return innerRect(b, this) || innerRect(this, b)
-    }
 
 }
