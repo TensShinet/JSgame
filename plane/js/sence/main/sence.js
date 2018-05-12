@@ -1,11 +1,3 @@
-var config = {
-    player_speed: 10,
-    player_colddown: 4,
-    cloud_speed: 0,
-    bullet_speed: 50,
-}
-
-
 class Sence extends GuaSence {
     constructor(game) {
         super(game)

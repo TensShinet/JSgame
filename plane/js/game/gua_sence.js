@@ -1,24 +1,20 @@
 class GuaSence {
     constructor(game) {
         this.game = game
-        this.element = []
+        this.elements = []
     }
     update() {
-        for(var i = 0; i < this.element.length; i++) {
-            var e = this.element[i]
-            if(e.y < 0 && e instanceof Bullet) {
-                this.element.splice(i, 1)
-                continue
-            }
+        for(var i = 0; i < this.elements.length; i++) {
+            var e = this.elements[i]
             e.update()
         }
     }
     addElement(img) {
         img.sence = this
-        this.element.push(img)
+        this.elements.push(img)
     }
     draw() {
-        for(var e of this.element) {
+        for(var e of this.elements) {
             e.draw()
         }
     }

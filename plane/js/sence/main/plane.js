@@ -13,6 +13,7 @@ class Player extends GuaImage {
     }
     update() {
         this.speed = config.player_speed
+        // log("plane", this.speed)
         this.colddown--
     }
     moveRight() {

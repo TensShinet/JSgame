@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title></title>
     </head>
+
     <!-- 方便调试的工具 -->
     <script type="text/javascript"src="js/tool/tool.js">
     </script>
@@ -15,6 +16,8 @@
     <script type="text/javascript"src="js/game/gua_sence.js">
     </script>
     <script type="text/javascript"src="js/game/gua_image.js">
+    </script>
+    <script type="text/javascript"src="js/game/gua_particle_system.js">
     </script>
     <!-- 主场景 -->
     <script type="text/javascript"src="js/sence/main/cloud.js">
@@ -36,52 +39,11 @@
     <body>
         <canvas id="myCanvas" width="400" height="500" style="border:1px solid #000000;">
         </canvas>
-        <div>
-            <label>
-                <input type="range" class="gua-auto-slider"
-                    value=""
-                    max="20"
-                    min="0"
-                    data-value="config.player_speed"
-                >
-                玩家速度<span calss="gua-label">10</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="range" class="gua-auto-slider"
-                    value=""
-                    max="100"
-                    min="0"
-                    data-value="config.bullet_speed"
-                >
-                bullet速度<span calss="gua-label">50</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="range" class="gua-auto-slider"
-                    value=""
-                    max="8"
-                    min="0"
-                    data-value="config.player_colddown"
-                >
-                bullet冷却时间<span calss="gua-label">4</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="range" class="gua-auto-slider"
-                    value=""
-                    max="10"
-                    min="-10"
-                    data-value="config.cloud_speed"
-                >
-                cloud速度<span calss="gua-label">0</span>
-            </label>
-        </div>
         <!-- 主函数 -->
         <script type="text/javascript" src="js/main.js">
+        </script>
+        <!-- 初始化页面, 自动配置,  -->
+        <script type="text/javascript"src="js/tool/config.js">
         </script>
         <script type="text/javascript">
             bindAll(".gua-auto-slider", "input", function(event){

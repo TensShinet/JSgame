@@ -42,3 +42,14 @@ var bindAll = function(sel, eventName, callback) {
 var innerRect = function(p1, p2, p3) {
         return p1 >= p2 && p1 <= p3
 }
+var removeFromArray = function(element, array) {
+    var e = element
+    var a = array
+    for (var i = 0; i < a.length; i++) {
+        if(e == a[i]) {
+            log("shanchu")
+            a.splice(i, 1)
+            break
+        }
+    }
+}
